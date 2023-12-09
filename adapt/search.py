@@ -11,7 +11,7 @@ import re
 try:
     from xtermcolor import colorize
 except ImportError:
-    print("Install python3-xtermcolor for fancier output formatting")
+    print("**Install python3-xtermcolor for fancier output formatting**\n")
     colorize = None
 
 def filter_search(text, installed=True, match_exact=None):
@@ -137,7 +137,7 @@ def _join_items(lst):
         
     return new
 
-def main(package, installed=False, notinstalled=False, exact=False):
+def search(package, installed=False, notinstalled=False, exact=False):
     """ 
     Run `apt search [package]`
     
@@ -168,8 +168,8 @@ def main(package, installed=False, notinstalled=False, exact=False):
         
     match_exact = package if exact else None
     
-    ret = subprocess.run(["apt", "search", package], 
-                         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    cmd = ["apt", "search", package]
+    ret = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     acs = ret.stdout.decode("utf-8")
     filter_search(acs, installed=installed, match_exact=match_exact)
     
@@ -184,7 +184,11 @@ def make_argparser():
                         help='only return results where the given string exactly matches the package name')
     return parser
 
-if __name__ == '__main__':
+def main(*args):
     parser = make_argparser()
-    args = parser.parse_args()
-    main(**vars(args))
+    args = parser.parse_args(args)
+    search(**vars(args))
+    
+if __name__ == '__main__':
+    import sys
+    main(sys.argv[1:])

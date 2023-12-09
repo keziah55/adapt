@@ -41,7 +41,7 @@ def _remove_package_name(packages, file):
 
 def _packages_file():
     """ 
-    Return path to csv file of installed packages. 
+    Return Path to csv file of installed packages. 
     
     Make file and directory, along with config file pointing to it, if required.
     """
@@ -51,7 +51,7 @@ def _packages_file():
     
     if config_file.exists():
         config.read(config_file)
-        packages_file = config["GENERAL"]["InstalledFilePath"]
+        packages_file = Path(config["GENERAL"]["InstalledFilePath"])
     else:
         # make .config/adapt dir, if necessary
         config_file.parent.mkdir(parents=True, exist_ok=True)
@@ -65,7 +65,7 @@ def _packages_file():
             
     return packages_file
 
-def main(package, remove=False, purge=False):
+def install(package, remove=False, purge=False):
     """ 
     Install `package` and update csv file.
     
@@ -107,8 +107,12 @@ def make_argparser():
     parser.add_argument('-p', '--purge', action='store_true',
                         help='remove with purge')
     return parser
+
+def main(*args):
+    parser = make_argparser()
+    args = parser.parse_args(args)
+    install(**vars(args))
     
 if __name__ == '__main__':
-    parser = make_argparser()
-    args = parser.parse_args()
-    main(**vars(args))
+    import sys
+    main(sys.argv[1:])

@@ -20,22 +20,28 @@ ln -s $ADAPT adapt
 
 ### adapt install
 
-You can use
+`adapt install` runs `sudo apt install` internally.
+
+To install a package (or packages), use
 ```bash
 adapt install [package]
 ```
-to install a package (or packages) and write the package name, along with the 
-current date and time, to `~/.local/share/adapt/packages.csv`. 
-Packages can be removed or purged with the `-r` or `-p` optoins, respectively.
+This automatically logs the package name, along with the current date and time, 
+in `~/.local/share/adapt/packages.csv`. 
+
+Packages can be removed or purged with the `-r` or `-p` options, respectively.
 
 See `adapt install -h` for all options.
 
 ### adapt search
 
-Search for a package with
+`adapt search` runs `apt search` internally.
+
+To search for a package, use
 ```bash
 adapt search [package]
 ```
+
 If given the option `-i`, only packages that are currently installed are shown;
 `-n` shows only those that are not installed. To only match the exact package 
 name given, use `-e`.

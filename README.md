@@ -2,6 +2,11 @@
 
 A couple of simple Python scripts to improve `apt` user experience.
 
+## Dependencies
+
+The are no required dependencies, beyond Python >= 3.8, however you may wish
+to install `python3-xtermcolor` to enable colored output from `adapt search`.
+
 ## Usage
 
 You may wish to make `adapt.py` exectuable with, then link it to a location in 

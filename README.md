@@ -9,7 +9,7 @@ to install `python3-xtermcolor` to enable colored output from `adapt search`.
 
 ## Usage
 
-You may wish to make `adapt.py` exectuable with, then link it to a location in 
+You may wish to make `adapt.py` exectuable, then link it to a location in 
 your `PATH`, eg:
 ```bash
 chmod 755 adapt.py
@@ -17,6 +17,9 @@ ADAPT=`readlink -f adapt.py`
 cd ~/bin
 ln -s $ADAPT adapt
 ```
+
+The following sections assume you have done this, or something similar, and so 
+you can simply call `adapt` rather than `python3 adapt.py`
 
 ### adapt install
 

@@ -28,6 +28,8 @@ to install a package (or packages) and write the package name, along with the
 current date and time, to `~/.local/share/adapt/packages.csv`. 
 Packages can be removed or purged with the `-r` or `-p` optoins, respectively.
 
+See `adapt install -h` for all options.
+
 ### adapt search
 
 Search for a package with
@@ -37,3 +39,5 @@ adapt search [package]
 If given the option `-i`, only packages that are currently installed are shown;
 `-n` shows only those that are not installed. To only match the exact package 
 name given, use `-e`.
+
+See `adapt search -h` for all options.

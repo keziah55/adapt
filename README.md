@@ -14,7 +14,7 @@ your `PATH`, eg:
 ```bash
 chmod 755 adapt.py
 ADAPT=`readlink -f adapt.py`
-cd ~/bin
+cd ~/.local/bin
 ln -s $ADAPT adapt
 ```
 

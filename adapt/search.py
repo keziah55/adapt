@@ -39,7 +39,8 @@ def filter_search(text, installed=True, match_exact=None):
     lines = _join_items(lines)
     
     for line in lines:
-        if match_exact is None or re.match(f"{match_exact}\/", line) is not None:
+        s = f"{match_exact}" + r"\/"
+        if match_exact is None or re.match(s, line) is not None:
             if installed is None:
                 # unaltered behaviour
                 _print_colour(line)
@@ -128,7 +129,7 @@ def _join_items(lst):
     new = []
     
     # get indices of lines that do not begin with whitespace (i.e. a new result)
-    idx = [i for i, item in enumerate(lst) if re.match('\S', item)]
+    idx = [i for i, item in enumerate(lst) if re.match(r'\S', item)]
     idx.append(len(lst))
     
     # join together results and descriptions
